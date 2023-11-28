@@ -28,7 +28,7 @@ def is_price_range_valid(price_lower_limit, price_upper_limit):
         if price_lower_limit > price_upper_limit:
             print("Invalid Price Range entered!")
 
-    #return result
+    return result
 
 ##################################################################
 # Function to calculate overall average expenses                 #
@@ -40,11 +40,14 @@ def is_price_range_valid(price_lower_limit, price_upper_limit):
 ##################################################################
 def calc_average_expenses(csv_list):
     average = 0
+    total_expenses = 0
 
     # Add your implementation from here
     #HINT start with this code: for item in csv_list:
+    for item in csv_list:
+        total_expenses += (float(item["price"]))
 
-
+    average = total_expenses/len(csv_list)
 
     return average
 
@@ -61,7 +64,8 @@ def calc_total_expenses(csv_list):
 
     # Add your implementation from here
     #HINT Start with this code: for item in csv_list:
-
+    for item in csv_list:
+        total_expenses += (float(item["price"]))
 
     return total_expenses
 
@@ -99,6 +103,7 @@ def sort_by_items(csv_list):
     result = []
 
     # Add your implementation from here
+    result = sorted(csv_list)
 
     return result
 
@@ -119,6 +124,7 @@ def display_main_menu():
     print("1 - Display all records")
     print("2 - Display statistics")
     print("3 - Display items within price range")
+    print("4 - Display all items in alphabetically in ascending order")
 
     print("Q - Quit")
 
@@ -151,6 +157,9 @@ def display_main_menu():
         # Invalid price range
         else:
             print("\nInvalid Price Range entered !")
+
+    elif option == '4':
+        sort_by_items(csv_list)
 
     # Quit application
     elif option == 'Q':
